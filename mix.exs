@@ -1,16 +1,14 @@
 defmodule ScrivenerHtml.Mixfile do
   use Mix.Project
 
-  @version "1.8.1"
+  @version "2.0.0"
   def project do
     [
       app: :scrivener_html,
       version: @version,
-      elixir: "~> 1.2",
-      name: "scrivener_html",
-      source_url: "https://github.com/mgwidmann/scrivener_html",
-      homepage_url: "https://github.com/mgwidmann/scrivener_html",
+      elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
+      name: "scrivener_html",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       description: "HTML helpers for Scrivener",
@@ -29,7 +27,7 @@ defmodule ScrivenerHtml.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [
-      applications: [:logger]
+      applications: [:logger, :phoenix, :phoenix_html]
     ]
   end
 
@@ -47,20 +45,23 @@ defmodule ScrivenerHtml.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:scrivener, "~> 1.2 or ~> 2.0"},
-      {:phoenix_html, "~> 2.2 or ~> 3.0"},
-      {:phoenix, "~> 1.0 and < 1.7.0", optional: true},
-      {:plug, "~> 1.1"},
-      {:ex_doc, "~> 0.19", only: :dev},
-      {:earmark, "~> 1.1", only: :dev}
+      {:scrivener, "~> 2.7.2"},
+      {:phoenix_view, "~> 2.0"},
+      {:phoenix_html, "~> 3.3"},
+      {:phoenix, "~> 1.7.2"},
+      {:plug, "~> 1.14.2"},
+      {:ex_doc, "~> 0.29.4", only: :dev},
+      {:earmark, "~> 1.4", only: :dev}
     ]
   end
 
   defp package do
     [
-      maintainers: ["Matt Widmann"],
-      licenses: ["MIT"],
-      links: %{github: "https://github.com/mgwidmann/scrivener_html"}
+      name: "scrivener_html",
+      description: "Payout Scrivener",
+      maintainers: ["erik-mocny"],
+      organization: "payout",
+      links: %{"GitHub" => "https://github.com/payout-one/scrivener_html"}
     ]
   end
 
